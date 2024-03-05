@@ -1,0 +1,23 @@
+---
+import LightModeIcon from "../components/icons/LightMode.astro"
+import LanguageIcon from "../components/icons/Language.astro"
+---
+
+<header class="flex flex-row flex-1 justify-around container-sm py-4">
+  <div class="spacer"></div>
+
+  <nav class="flex flex-row gap-x-10 opacity-80">
+    <a href="#projects">Projects</a>
+    <a href="#about">About me</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  
+  <div class="flex flex-row gap-x-2 self-end relative left-2">
+    <button>
+      <LightModeIcon />
+    </button>
+    <button>
+      <LanguageIcon />
+    </button>
+  </div>
+</header>

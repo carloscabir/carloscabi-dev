@@ -1,0 +1,102 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Badge from '../components/Badge.astro'
+import SectionContainer from '../components/SectionContainer.astro'
+
+import SocialPill from '../components/SocialPill.astro'
+
+import LinkedInIcon from '../components/icons/LinkedIn.astro'
+import GitHubIcon from '../components/icons/GitHub.astro'
+import EmailIcon from '../components/icons/Gmail.astro'
+import EmailThinIcon from '../components/icons/GmailThin.astro'
+import CodeTagIcon from '../components/icons/CodeTag.astro'
+import PersonIcon from '../components/icons/Person.astro'
+
+import Projects from '../components/Projects.astro'
+---
+
+<Layout 
+title="Carlos Cabi - A Young Web Developer in process to reach a future"
+description="I'm Carlos Cabi, a Full-Stack Web Developer with passion for crafting high-quality applications using React, Node.js, and more! Let's bring your web vision to life!"
+>
+	<main class="max-w-screen-md my-10 mx-auto flex flex-col gap-16">
+    
+    <SectionContainer class="flex flex-col gap-8">
+      <div class="flex flex-col sm:flex-row items-center gap-5">
+        
+        <div class="rounded-full w-56 md:w-72 flex flex-col justify-center content-center p-1 bg-white">
+          <img src="/avatar.svg" alt="avatar-carloscabi">
+        </div>
+  
+        <div>
+          <h1 class="flex flex-col sm:flex-row items-center gap-2 text-4xl text-white mb-2 pb-3">
+            Hey, I'm Carlos Cabi 
+            <a href="https://www.linkedin.com/in/carlos-cabi/" target="_blank" rel="noopener" class="flex flex-col items-center px-1">
+              <Badge>Available for hire</Badge>
+            </a>
+          </h1>
+          <p class="text-base text-center sm:text-lg sm:text-justify opacity-80 text-pretty">
+            Enthusiastic Problem-solving <span class="text-blue-300 font-medium"> Web Developer </span> from Kentucky, the USA -en-. <span class="text-blue-300 font-medium"> Always up for a challenge.</span>
+          </p>  
+        </div> 
+
+      </div>
+      
+      <div class="self-center">
+        <nav class="flex gap-2">
+          <SocialPill
+          href="mailto:cabicarlosdev@gmail.com"
+          >
+            <EmailIcon class="size-4"/>
+            cabicarlosdev@gmail.com
+          </SocialPill>
+
+          <SocialPill 
+          href="https://www.linkedin.com/in/carlos-cabi/" target="_blank"
+          rel="noopener">
+            <LinkedInIcon class="size-3.5 "/>
+            LinkedIn
+          </SocialPill>
+          
+          <SocialPill
+          href="https://github.com/carloscabir/"
+          target="_blank"
+          rel="noopener">
+            <GitHubIcon class="size-4"/>
+            GitHub
+          </SocialPill>
+        </nav>
+      </div>
+    </SectionContainer>
+
+    <SectionContainer id="projects">
+      <h2 class="text-2xl md:text-3xl flex items-center gap-x-2 mb-10">
+        <CodeTagIcon class="size-7 h-7 inline sm:size-9" />
+        Projects
+      </h2>
+      
+      <div class="flex flex-col gap-y-16">
+        <Projects />
+      </div>
+    </SectionContainer>
+
+    <SectionContainer id="about">
+      <h2 class="text-2xl md:text-3xl flex items-center gap-x-2">
+        <PersonIcon class="size-7 inline sm:size-9" />
+        About me
+      </h2>
+    </SectionContainer>
+  
+    <SectionContainer id="contact">
+      <h2 class="text-2xl md:text-3xl flex items-center gap-x-2">
+        <EmailThinIcon class="size-7 inline sm:size-9"/>
+        Contact
+      </h2>
+     
+    </SectionContainer>
+  </main>
+</Layout>
+
+<script>
+  
+</script>

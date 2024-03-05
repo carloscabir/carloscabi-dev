@@ -1,0 +1,91 @@
+---
+import { TAGS } from '../consts/index.js'
+import SocialPill from './SocialPill.astro'
+import GitHubLightIcon from './icons/GitHubLight.astro'
+import LinkIcon from './icons/Link.astro'
+
+const { NEXT, REACT, TYPESCRIPT, NODE } = TAGS
+
+const PROJECTS = [
+  {
+    title: 'Todo App - Simple and minimalist details',
+    description: 'A To-do list App for creating quick tasks! Made from scratch with Typescript, React and Node.js as API Server.',
+    github: "https://github.com/carloscabir/My-Coding-Projects-carloscabir/tree/main/02-fullstack/00-todo-app",
+    link: "https://todoapp-carloscabi.netlify.app/",
+    image: '/shot-todo.webp',
+    tags: [REACT, TYPESCRIPT, NODE]
+  },
+  {
+    title: 'Pomodoro Clock - A productive clock for Pomofocus technique',
+    description: 'Clock for studying. 100% focused on you, 100% focused on your work. Made from scratch with React.',
+    github: "https://github.com/carloscabir/My-Coding-Projects-carloscabir/tree/main/01-frontend/00-frecodecamp-libraries-proojects/04-pomodoro-clock",
+    link: "https://codepen.io/taidmc/full/QWYBmQw",
+    image: '/shot-pomodoro.webp',
+    tags: [REACT, NEXT]
+  }
+]
+---
+
+{
+  PROJECTS.map(({ title, description, tags, image, github, link }) => {
+    return (
+      <article class=" flex flex-col md:flex-row gap-5 transition-all lg:scale-110 lg:-translate-y-1">
+        <div class="w-full md:w-1/2">
+          <img
+            class="rounded-lg w-auto md:h-48 sm:h-full "
+            src={image}
+            alt={`Project screenshot of ${title}`}
+            loading="lazy"
+            />
+        </div>
+
+        <div class="w-full md:w-1/2 flex flex-col">
+          <h3 class="text-xl sm:text-2xl font-semibold text-slate-100 mt-4">{title}
+          </h3>
+
+          <div class="text-gray-300">
+            <ul class="flex flex-row gap-x-4 mt-1 mb-3">
+              {tags.map((tag) => {
+                return (
+                  <li>
+                    <span class={`flex items-center gap-x-2 rounded-full text-xs px-2 py-0.5 ${tag.class}`}>
+                      <tag.icon class="size-5" />
+                      { tag.name }
+                    </span>
+                  </li>)
+              })}
+            </ul>
+  
+            <p class="text-pretty text-md sm:text-lg mb-2">{description}</p>
+           
+            <footer class="w-full flex gap-x-5">
+              {
+                github && 
+                <SocialPill 
+                href={github}
+                rel="noopener"
+                target="_blank"
+                class="text-white font-bold rounded-md gap-x-1.5">
+                  <GitHubLightIcon class="size-6"/>
+                  Code
+                </SocialPill>
+              }
+
+              {
+                link &&
+                <SocialPill
+                href={link}
+                rel="noopener"
+                target="_blank"
+                class="text-white font-bold rounded-md gap-x-1.5">
+                  <LinkIcon />
+                  Preview
+                </SocialPill>
+              }
+            </footer>
+          </div>
+        </div>
+      </article>
+    )
+  })
+}
