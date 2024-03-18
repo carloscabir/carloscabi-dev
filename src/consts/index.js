@@ -25,3 +25,5 @@ export const TAGS = {
     icon: (NodeIcon)
   }
 }
+
+export const EMAIL_CARLOS_CABI = "cabicarlosdev@gmail.com"

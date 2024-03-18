@@ -1,0 +1,45 @@
+---
+import SocialPill from './Pill.astro'
+import CopyIcon from './icons/Copy.astro'
+import SendIcon from './icons/Send.astro'
+
+import { EMAIL_CARLOS_CABI } from '@/consts'
+---
+
+<article class="w-5/6 lg:w-full flex gap-x-5 justify-around align-middle">
+  <p class="w-11/12 bg-gray-300/30 p-3 rounded-md">
+    {EMAIL_CARLOS_CABI}
+  </p>
+
+  <div class="w-1/12 flex gap-x-2">
+    <SocialPill id="copy-email-button" class="bg-blue-300/50 text-white font-bold rounded-md" title="Copy Email">
+      <CopyIcon data-tooltip-target="tooltip-animation" class="size-6"/>
+      <div id="tooltip" class="scale-0 transition-all fixed -top-8 rounded-md px-2 py-1 text-sm text-gray-200 bg-gray-300/30 shadow-sm">
+        Copied
+      </div>
+    </SocialPill>
+    
+    <SocialPill href={`mailto:${EMAIL_CARLOS_CABI}`} class="bg-blue-300/50 text-white font-bold rounded-md" title="Send Email through your default email client">
+      <SendIcon class="size-6"/>
+    </SocialPill>
+  </div>
+</article>
+
+<script>
+  import { EMAIL_CARLOS_CABI } from '@/consts'
+
+  const $CopyEmailButton = document.getElementById("copy-email-button")
+  const $tooltip = document.getElementById('tooltip');
+
+  $CopyEmailButton?.addEventListener("click", () => {
+    $tooltip?.classList.remove('scale-0');
+    $tooltip?.classList.add('scale-100');
+
+    navigator.clipboard.writeText(EMAIL_CARLOS_CABI);
+
+    setTimeout(() => {
+      $tooltip?.classList.remove('scale-100')
+      $tooltip?.classList.add('scale-0')
+    }, 2000);
+  })
+</script>

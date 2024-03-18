@@ -1,0 +1,28 @@
+---
+  import Layout from '@/layouts/Layout.astro'
+
+  import SectionContainer from '@/components/SectionContainer.astro'
+  import MainContainer from '@/components/MainContainer.astro'
+
+  import Badge from '@/components/Badge.astro'
+---
+
+<Layout 
+  title='Design System portfoli.dev'
+  description='Catalog of components of the portfolio'>
+  <MainContainer class="w-full">
+    <SectionContainer class="justify-normal">
+      
+        <article class="">
+          <h1>&lt; Badge /&gt;</h1>
+          
+          <div>
+            <Badge>Tailwind</Badge>
+            <Badge>Next.js</Badge>
+          </div>
+        </article>
+  
+    </SectionContainer>
+
+  </MainContainer>
+</Layout>
