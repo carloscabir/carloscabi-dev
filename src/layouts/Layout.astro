@@ -29,9 +29,15 @@ const { description, title } = Astro.props;
     right-0
     top-0
     
-    bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)]
-    bg-[size:16px_26px]
+    bg-[#d2d3db]
+    text-black
     
+    bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#3030300a_1px,transparent_1px)]
+    bg-[size:16px_26px]
+
+    dark:bg-[#121212]
+    dark:text-white/95
+    dark:font-normal
     dark:bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)]`}>
 
     <Header />
@@ -45,15 +51,15 @@ const { description, title } = Astro.props;
 
 <style is:global>
 	:root {
+    color-scheme: light dark;
 	}
 
 	html {
 		font-family: 'Onest variable', system-ui, sans-serif;
-    color-scheme: light dark;
     font-size: 16px;
+    width: 100%;
     scroll-behavior: smooth;
     scroll-padding-top: 75px;
-    width: 100%;
   }
 
   body {
@@ -78,5 +84,11 @@ const { description, title } = Astro.props;
       scroll-behavior: auto;
     }
   }
-  
+
+  /* @media (prefers-color-scheme: dark) {
+    body {
+      color: #f2f2f2;
+      background-color: #121212;
+    }
+  } */
 </style>

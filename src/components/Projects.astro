@@ -29,10 +29,11 @@ const PROJECTS = [
 {
   PROJECTS.map(({ title, description, tags, image, github, link }) => {
     return (
-      <div class="flex flex-col md:flex-row gap-5 transition-all lg:scale-110 lg:-translate-y-1">
+      //  TOOD: FIX IMG SIZE FOR LG MEDIA_QUERY 
+      <div class="flex flex-col md:flex-row gap-5 lg:gap-2 transition-all lg:-translate-y-4">
         <div class="w-full md:w-1/2">
           <img
-            class="rounded-lg w-auto md:h-48 sm:h-full "
+            class="rounded-lg w-auto md:h-48 sm:h-full lg:scale-125"
             src={image}
             alt={`Project screenshot of ${title}`}
             loading="lazy"
