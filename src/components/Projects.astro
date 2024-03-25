@@ -1,6 +1,7 @@
 ---
 import { TAGS } from '../consts/index.js'
 import SocialPill from './Pill.astro'
+import LinkButton from './LinkButton.astro'
 import GitHubLightIcon from './icons/GitHubLight.astro'
 import LinkIcon from './icons/Link.astro'
 
@@ -29,22 +30,20 @@ const PROJECTS = [
 {
   PROJECTS.map(({ title, description, tags, image, github, link }) => {
     return (
-      //  TOOD: FIX IMG SIZE FOR LG MEDIA_QUERY 
-      <div class="flex flex-col md:flex-row gap-5 lg:gap-2 transition-all lg:-translate-y-4">
-        <div class="w-full md:w-1/2">
-          <img
-            class="rounded-lg w-auto md:h-48 sm:h-full lg:scale-125"
-            src={image}
-            alt={`Project screenshot of ${title}`}
-            loading="lazy"
-            />
-        </div>
+      <div class="flex flex-col md:flex-row gap-10 transition-all">
+        
+        <img
+          class="rounded-lg w-auto md:h-48 lg:h-60 sm:h-full"
+          src={image}
+          alt={`Project screenshot of ${title}`}
+          loading="lazy"
+        />
 
-        <div class="w-full md:w-1/2 flex flex-col">
-          <h3 class="text-xl sm:text-2xl font-semibold text-slate-100 mt-4">{title}
+        <div class="w-full flex flex-col">
+          <h3 class="text-xl sm:text-2xl font-semibold text-zinc-900 dark:text-slate-100 mt-4">{title}
           </h3>
 
-          <div class="text-gray-300">
+          <div class="dark:text-gray-300">
             <ul class="flex flex-row gap-x-4 mt-1 mb-3">
               {tags.map((tag) => {
                 return (
@@ -62,26 +61,24 @@ const PROJECTS = [
             <footer class="w-full flex gap-x-5">
               {
                 github && 
-                <SocialPill 
+                <LinkButton 
                 href={github}
                 rel="noopener"
-                target="_blank"
-                class="text-white font-bold rounded-md gap-x-1.5">
+                target="_blank">
                   <GitHubLightIcon class="size-6"/>
                   Code
-                </SocialPill>
+                </LinkButton>
               }
 
               {
                 link &&
-                <SocialPill
+                <LinkButton
                 href={link}
                 rel="noopener"
-                target="_blank"
-                class="text-white font-bold rounded-md gap-x-1.5">
+                target="_blank">
                   <LinkIcon />
                   Preview
-                </SocialPill>
+                </LinkButton>
               }
             </footer>
           </div>
