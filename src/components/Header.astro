@@ -2,8 +2,6 @@
 import ToggleTheme from "./ToggleTheme.astro"
 import ToggleLanguage from './ToggleLanguage.astro'
 
-import { EMAIL_CARLOS_CABI } from '@/consts'
-
 const navItems = [
   {
     title: "Projects",
@@ -21,7 +19,6 @@ const navItems = [
     url: "/#contact"
   },
 ]
-
 ---
 
 <header class="fixed top-0 right-0 left-0 z-10 flex flex-row flex-1 justify-around items-center container-sm py-5 bg-neutral-950 text-white font-medium">
@@ -29,11 +26,11 @@ const navItems = [
 
   <nav class="flex flex-row gap-x-10 opacity-80 hover:*:text-blue-400 dark:hover:*:text-blue-300 *:transition-colors">
    {
-    navItems.map(({title, label, url}) => (<a href={url} aria-label={label}> {title} </a>
+    navItems.map(({title, label, url}) => (
+      <a href={url} aria-label={label}> {title} </a>
     ))
    }
   </nav>
-  
   
   <div class="flex flex-row align-center justify-center gap-x-8 relative left-2 sm:gap-x-10"> 
     <ToggleTheme />

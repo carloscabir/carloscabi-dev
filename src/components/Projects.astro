@@ -1,9 +1,8 @@
 ---
 import { TAGS } from '../consts/index.js'
-import SocialPill from './Pill.astro'
+import LinkIcon from './icons/Link.astro'
 import LinkButton from './LinkButton.astro'
 import GitHubLightIcon from './icons/GitHubLight.astro'
-import LinkIcon from './icons/Link.astro'
 
 const { NEXT, REACT, TYPESCRIPT, NODE } = TAGS
 
@@ -27,6 +26,8 @@ const PROJECTS = [
 ]
 ---
 
+
+<div class="flex flex-col gap-y-16">
 {
   PROJECTS.map(({ title, description, tags, image, github, link }) => {
     return (
@@ -87,3 +88,4 @@ const PROJECTS = [
     )
   })
 }
+</div>

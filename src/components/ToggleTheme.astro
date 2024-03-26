@@ -19,7 +19,7 @@ const THEMES = ["Light", "Dark", "System"]
     <ul>
       {
         THEMES.map((theme) => (
-      <li class="themes-menu-option px-2 py-1.5 cursor-default text-black dark:text-white/95 hover:bg-neutral-400/40 dark:hover:bg-gray-500/50 rounded-sm"> { theme } </li>))
+      <li class="themes-menu-option px-2 py-1.5 cursor-default text-black dark:text-white/95 hover:bg-neutral-400/40 dark:hover:bg-gray-500/50 rounded-sm"> {theme} </li>))
       }
     </ul> 
 </div>
@@ -60,7 +60,6 @@ const THEMES = ["Light", "Dark", "System"]
     (themePreference === "system" && matchMedia.matches)
 
     updateIcon(themePreference as ThemePreference)
-    console.log(themePreference)
     document.documentElement.classList[isDark ? "add" : "remove"]("dark")
   }
 
