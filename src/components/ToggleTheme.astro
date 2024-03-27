@@ -3,7 +3,27 @@ import LightModeIcon from "./icons/LightMode.astro"
 import DarkModeIcon from "./icons/DarkMode.astro"
 import SystemModeIcon from "./icons/DesktopMode.astro"
 
-const THEMES = ["Light", "Dark", "System"]
+import { getLangFromUrl, useTranslations } from '@/i18n/utils' 
+import { UI_THEME_MENU_KEYS } from '@/i18n/navUi'
+
+const lang = getLangFromUrl(Astro.url)
+const t = useTranslations(lang)
+
+const {light, dark, system} = UI_THEME_MENU_KEYS
+const THEMES = [
+  {
+    label: t(light),
+    theme: 'light' 
+  },
+  {
+    label: t(dark),
+    theme: 'dark' 
+  },
+  {
+    label: t(system),
+    theme: 'system' 
+  },
+]
 ---
 
 <div>
@@ -18,21 +38,21 @@ const THEMES = ["Light", "Dark", "System"]
 <div id="themes-menu" class="absolute scale-0 transition-all top-8 right-0 text-sm p-1 min-w-[8rem] rounded-md border border-gray-100 bg-white/90 dark:bg-black/95 dark:border-blue-300/10 shadow-[0_3px_10px_rgb(0,0,0,0.2)] backdrop-blur-sm">
     <ul>
       {
-        THEMES.map((theme) => (
-      <li class="themes-menu-option px-2 py-1.5 cursor-default text-black dark:text-white/95 hover:bg-neutral-400/40 dark:hover:bg-gray-500/50 rounded-sm"> {theme} </li>))
+        THEMES.map(({label, theme}) => (
+      <li class="themes-menu-option px-2 py-1.5 cursor-default text-black dark:text-white/95 hover:bg-neutral-400/40 dark:hover:bg-gray-500/50 rounded-sm" data-theme={theme}> {label} </li>))
       }
     </ul> 
 </div>
 
 <script>
-  type Dark = "dark"
-  type Light = "light"
-  type System = "system"
+  const Dark = "dark"
+  const Light = "light"
+  const System = "system"
 
   type ThemePreference = 
-  | System
-  | Light
-  | Dark
+  | typeof System
+  | typeof Light
+  | typeof Dark
 
   const matchMedia = window.matchMedia("(prefers-color-scheme: dark)")
   const themesMenu = document.getElementById("themes-menu")
@@ -77,7 +97,7 @@ const THEMES = ["Light", "Dark", "System"]
   document.querySelectorAll(".themes-menu-option").forEach((el) => {
     el.addEventListener("click", (e) => {
       if (e?.target instanceof HTMLLIElement) {
-        localStorage.setItem("theme", e.target.innerText.toLowerCase().trim())
+        localStorage.setItem("theme", e.target.dataset.theme as string)
         updateTheme()
       }
     })
