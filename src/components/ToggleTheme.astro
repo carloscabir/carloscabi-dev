@@ -55,7 +55,7 @@ const THEMES = [
   | typeof Dark
 
   const matchMedia = window.matchMedia("(prefers-color-scheme: dark)")
-  const themesMenu = document.getElementById("themes-menu")
+  const $themesMenu = document.getElementById("themes-menu")
 
   const getThemePreference = () => {
     if (typeof localStorage !== 'undefined') return localStorage.getItem("theme") ?? "system"
@@ -85,13 +85,13 @@ const THEMES = [
 
   updateTheme()
 
-  document.addEventListener("click", () => themesMenu?.classList.add("scale-0"))
+  document.addEventListener("click", () => $themesMenu?.classList.add("scale-0"))
 
   document.getElementById("theme-toggle-button")?.addEventListener("click", (e) => {
     e.stopPropagation()
 
-    const isClosed = !themesMenu?.classList.contains("scale-0")
-    themesMenu?.classList[isClosed ? "add" : "remove"]("scale-0")
+    const isClosed = !$themesMenu?.classList.contains("scale-0")
+    $themesMenu?.classList[isClosed ? "add" : "remove"]("scale-0")
   })
 
   document.querySelectorAll(".themes-menu-option").forEach((el) => {

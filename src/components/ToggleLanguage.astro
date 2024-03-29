@@ -5,10 +5,62 @@ import { languages } from '../i18n/navUi'
 
 <div>
   <div>
-    <button>
-      <LanguageIcon />
+    <button id="language-toggle-button" class="transition-all border-none appearance-none flex hover:scale-110 hover:text-blue-400 dark:hover:text-blue-300">
+      <LanguageIcon class="size-6"/>
     </button>
   </div>
   
-  <div></div>
+  <div id="languages-menu" class="absolute scale-0 transition-all top-8 right-0 text-sm p-1 min-w-[8rem] rounded-md border border-gray-100 bg-white/90 dark:bg-black/95 dark:border-blue-300/10 shadow-[0_3px_10px_rgb(0,0,0,0.2)] backdrop-blur-sm">
+    <ul>
+      {
+        Object.entries(languages).map(([lang, label]) => (
+        <li class="languages-menu-option px-2 py-1.5 cursor-default text-black dark:text-white/95 hover:bg-neutral-400/40 dark:hover:bg-gray-500/50 rounded-sm" data-language={lang}> {label} </li>))
+      }
+    </ul> 
+  </div>
 </div>
+
+<script>
+import { defaultLang, languages } from '@/i18n/navUi'
+import { useLink } from '@/i18n/utils'
+
+  const $languagesMenu = document.getElementById("languages-menu")
+
+  const getLanguagePreference = () => {
+    if (typeof localStorage !== 'undefined') return localStorage.getItem("language") ?? defaultLang
+  }
+
+  const updateLanguage = () => {
+    const languagePreference = getLanguagePreference() as keyof typeof languages
+    console.log(languagePreference)
+    const link = useLink(languagePreference, '')
+    // Todo: Use Redirect to distinct language pages when users changes the language
+    // 
+    // 
+    // 
+    //  location.replace(link)
+    // return Astro.redirect(useLink(languagePreference, "")) 
+    // 
+    console.log(Astro)
+  }
+
+  updateLanguage()
+
+  document.addEventListener("click", () => $languagesMenu?.classList.add("scale-0"))
+
+  document.getElementById("language-toggle-button")?.addEventListener("click", (e) => {
+    e.stopPropagation()
+
+    const isClosed = !$languagesMenu?.classList.contains("scale-0")
+    $languagesMenu?.classList[isClosed ? "add" : "remove"]("scale-0")
+  })
+
+  document.querySelectorAll(".languages-menu-option").forEach((el) => {
+    el.addEventListener("click", (e) => {
+      if (e?.target instanceof HTMLLIElement) {
+        localStorage.setItem("language", e.target.dataset.language as keyof typeof languages)
+        updateLanguage()
+      }
+    })
+  })
+</script>

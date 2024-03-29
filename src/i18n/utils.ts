@@ -1,4 +1,4 @@
-import { ui, defaultLang } from './navUi';
+import { ui, defaultLang, languages } from './navUi';
 
 export function getLangFromUrl(url: URL) {
   const [, lang] = url.pathname.split('/');
@@ -14,4 +14,10 @@ export function useTranslations(lang: keyof typeof ui) {
   return function t(key: keyof typeof ui[typeof defaultLang]) {
     return ui[lang][key] || ui[defaultLang][key];
   }
+}
+
+export function useLink(lang: keyof typeof languages, label: string) { 
+  if (lang === defaultLang) return `/${label}`
+  
+  return `/${lang}/${label}`
 }

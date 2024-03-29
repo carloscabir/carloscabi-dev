@@ -2,29 +2,28 @@
 import ToggleTheme from "./ToggleTheme.astro"
 import ToggleLanguage from './ToggleLanguage.astro'
 
-import { getLangFromUrl, useTranslations } from '@/i18n/utils' 
+import { getLangFromUrl, useTranslations, useLink } from '@/i18n/utils' 
 import { UI_NAV_KEYS } from '@/i18n/navUi'
 
 const lang = getLangFromUrl(Astro.url)
 const t = useTranslations(lang)
 
-// TODO: To check en URL nav links and redirect if needed. Error: I redirect automatically to en/ and it causes a 404
 const {about, contact, projects} = UI_NAV_KEYS
 const navItems = [
   {
     title: t(projects),
     label: t(projects),
-    url: `/${lang}/#projects`
+    url: useLink(lang, '#projects')
   },
   {
     title: t(about),
     label: t(about),
-    url: `/${lang}/#about`
+    url: useLink(lang, '#about')
   },
   {
     title: t(contact),
     label: t(contact),
-    url: `/${lang}/#contact`
+    url: useLink(lang, '#contact')
   }
 ]
 ---
