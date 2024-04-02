@@ -22,26 +22,30 @@ import { languages } from '../i18n/navUi'
 
 <script>
 import { defaultLang, languages } from '@/i18n/navUi'
-import { useLink } from '@/i18n/utils'
+import { useLink, getLangFromUrl } from '@/i18n/utils'
 
   const $languagesMenu = document.getElementById("languages-menu")
 
-  const getLanguagePreference = () => {
+  const getPreferredLang = () => {
     if (typeof localStorage !== 'undefined') return localStorage.getItem("language") ?? defaultLang
   }
 
   const updateLanguage = () => {
-    const languagePreference = getLanguagePreference() as keyof typeof languages
-    console.log(languagePreference)
-    const link = useLink(languagePreference, '')
-    // Todo: Use Redirect to distinct language pages when users changes the language
-    // 
-    // 
-    // 
-    //  location.replace(link)
-    // return Astro.redirect(useLink(languagePreference, "")) 
-    // 
-    console.log(Astro)
+    const preferredLang = getPreferredLang() as keyof typeof languages
+
+    if (window.location) {
+      const langFromUrl = getLangFromUrl(new URL(window.location.href))
+      
+      if (!Object.keys(languages).includes(preferredLang) && langFromUrl !== preferredLang) {
+        localStorage.setItem("language", defaultLang)
+        window.location.replace('/')
+      }
+
+      const link = useLink(preferredLang, '')
+      
+      if (langFromUrl !== preferredLang) window.location.replace(link);
+      if (preferredLang !== defaultLang && langFromUrl !== preferredLang) window.location.replace(link);
+    }
   }
 
   updateLanguage()
