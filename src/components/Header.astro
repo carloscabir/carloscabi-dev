@@ -3,7 +3,7 @@ import ToggleTheme from "./ToggleTheme.astro"
 import ToggleLanguage from './ToggleLanguage.astro'
 
 import { getLangFromUrl, useTranslations, useLink } from '@/i18n/utils' 
-import { UI_NAV_KEYS } from '@/i18n/navUi'
+import { UI_NAV_KEYS } from '@/i18n/headerUi'
 
 const lang = getLangFromUrl(Astro.url)
 const t = useTranslations(lang)

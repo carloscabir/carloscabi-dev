@@ -4,7 +4,7 @@ import DarkModeIcon from "./icons/DarkMode.astro"
 import SystemModeIcon from "./icons/DesktopMode.astro"
 
 import { getLangFromUrl, useTranslations } from '@/i18n/utils' 
-import { UI_THEME_MENU_KEYS } from '@/i18n/navUi'
+import { UI_THEME_MENU_KEYS } from '@/i18n/headerUi'
 
 const lang = getLangFromUrl(Astro.url)
 const t = useTranslations(lang)

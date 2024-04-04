@@ -1,6 +1,11 @@
 ---
+import { getLangFromUrl, useTranslations } from '@/i18n/utils'
 import LanguageIcon from "../components/icons/Language.astro"
-import { languages } from '../i18n/navUi'
+import {  UI_LANG_MENU_KEYS } from '../i18n/headerUi'
+import { languages } from '@/i18n/consts'
+
+const lang = getLangFromUrl(Astro.url)
+const t = useTranslations(lang)
 ---
 
 <div>
@@ -13,22 +18,24 @@ import { languages } from '../i18n/navUi'
   <div id="languages-menu" class="absolute scale-0 transition-all top-8 right-0 text-sm p-1 min-w-[8rem] rounded-md border border-gray-100 bg-white/90 dark:bg-black/95 dark:border-blue-300/10 shadow-[0_3px_10px_rgb(0,0,0,0.2)] backdrop-blur-sm">
     <ul>
       {
-        Object.entries(languages).map(([lang, label]) => (
-        <li class="languages-menu-option px-2 py-1.5 cursor-default text-black dark:text-white/95 hover:bg-neutral-400/40 dark:hover:bg-gray-500/50 rounded-sm" data-language={lang}> {label} </li>))
+        Object.entries(languages).map(([lang, label]) => {
+          console.log(lang)
+          console.log(UI_LANG_MENU_KEYS[lang])
+          return (
+        <li class="languages-menu-option px-2 py-1.5 cursor-default text-black dark:text-white/95 hover:bg-neutral-400/40 dark:hover:bg-gray-500/50 rounded-sm" data-language={lang}>
+          {t(UI_LANG_MENU_KEYS[lang] as string)}
+          </li>)
+        })
       }
     </ul> 
   </div>
 </div>
 
 <script>
-import { defaultLang, languages } from '@/i18n/navUi'
-import { useLink, getLangFromUrl } from '@/i18n/utils'
+import { defaultLang, languages } from '@/i18n/consts'
+import { useLink, getLangFromUrl, getPreferredLang } from '@/i18n/utils'
 
   const $languagesMenu = document.getElementById("languages-menu")
-
-  const getPreferredLang = () => {
-    if (typeof localStorage !== 'undefined') return localStorage.getItem("language") ?? defaultLang
-  }
 
   const updateLanguage = () => {
     const preferredLang = getPreferredLang() as keyof typeof languages

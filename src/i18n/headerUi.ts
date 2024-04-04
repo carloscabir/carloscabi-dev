@@ -1,10 +1,3 @@
-export const languages = {
-  en: 'English',
-  es: 'Spanish',
-};
-
-export const defaultLang = 'en';
-
 export const UI_NAV_KEYS = {
   projects: 'nav.projects',
   about: 'nav.about',
@@ -17,6 +10,11 @@ export const UI_THEME_MENU_KEYS = {
   system: 'theme.system'
 } as const
 
+export const UI_LANG_MENU_KEYS = {
+  en: 'lang.en',
+  es: 'lang.es'
+}
+
 export const ui = {
   en: {
     [UI_NAV_KEYS.projects]: 'Projects',
@@ -25,6 +23,8 @@ export const ui = {
     [UI_THEME_MENU_KEYS.light]: 'Light',
     [UI_THEME_MENU_KEYS.dark]: 'Dark',
     [UI_THEME_MENU_KEYS.system]: 'System',
+    [UI_LANG_MENU_KEYS.en]: 'English',
+    [UI_LANG_MENU_KEYS.es]: 'Spanish',
   },
   es: {
     [UI_NAV_KEYS.projects]: 'Proyectos',
@@ -33,5 +33,7 @@ export const ui = {
     [UI_THEME_MENU_KEYS.light]: 'Claro',
     [UI_THEME_MENU_KEYS.dark]: 'Oscuro',
     [UI_THEME_MENU_KEYS.system]: 'Sistema',
+    [UI_LANG_MENU_KEYS.en]: 'Inglés',
+    [UI_LANG_MENU_KEYS.es]: 'Español',
   },
 } as const;

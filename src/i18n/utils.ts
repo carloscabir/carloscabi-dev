@@ -1,4 +1,5 @@
-import { ui, defaultLang, languages } from './navUi';
+import { defaultLang, languages } from './consts'
+import { ui } from './headerUi';
 
 export function getLangFromUrl(url: URL) {
   const [, lang] = url.pathname.split('/');
@@ -21,3 +22,7 @@ export function useLink(lang: keyof typeof languages, label: string) {
   
   return `/${lang}/${label}`
 }
+
+export function getPreferredLang() {
+    if (typeof localStorage !== 'undefined') return localStorage.getItem("language") ?? defaultLang
+  }
