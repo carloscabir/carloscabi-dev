@@ -1,30 +1,56 @@
 ---
-import Layout from '../../layouts/Layout.astro'
+import Layout from '@/layouts/Layout.astro';
+
+import MainContainer from '@/components/MainContainer.astro'
+import SectionContainer from '@/components/SectionContainer.astro'
+import SectionTitle from '@/components/SectionTitle.astro'
+
+import EmailThinIcon from '@/components/icons/GmailThin.astro'
+import CodeTagIcon from '@/components/icons/CodeTag.astro'
+import PersonIcon from '@/components/icons/Person.astro'
+
 import Projects from '@/components/Projects.astro'
 import About from '@/components/About.astro'
+import Contact from '@/components/Contact.astro'
+import Intro from '@/components/Intro.astro'
 ---
 
-<Layout
-description='Si'
-title='Pagina en Español'>
-<br>
-<br>
-<br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <h1>Hola</h1>
-  <About/>
+<Layout 
+title="Carlos Cabi - Un Joven Desarrollador Web en proceso de alcanzar un futuro"
+description="Soy Carlos Cabi, un Desarollador Web Full-Stack apasionado por crear aplicaciones de alta calidad con React, Node.js, y más! Hagamos realidad tu visión web!"
+>
+<MainContainer>
+    
+    <SectionContainer class="flex flex-col gap-8">
+      <Intro />
+    </SectionContainer>
+
+    <SectionContainer id="projects">
+      <SectionTitle class="text-2xl md:text-3xl flex items-center gap-x-2 mb-10">
+        <CodeTagIcon class="size-7 h-7 inline sm:size-9" />
+        Projects
+      </SectionTitle>
+      
+      <Projects />
+    </SectionContainer>
+
+    <SectionContainer id="about">
+      <SectionTitle>
+        <PersonIcon class="size-7 inline sm:size-9" />
+        About me
+      </SectionTitle>
+     
+      <About />
+    </SectionContainer>
+  
+    <SectionContainer id="contact">
+      <SectionTitle>
+        <EmailThinIcon class="size-7 inline sm:size-9"/>
+        Contact
+      </SectionTitle>
+     
+      <Contact />
+    </SectionContainer>
+
+  </MainContainer>
 </Layout>

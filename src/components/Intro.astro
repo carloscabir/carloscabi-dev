@@ -8,6 +8,26 @@ import Badge from '../components/Badge.astro'
 import SocialPill from '../components/Pill.astro'
 
 import { EMAIL_CARLOS_CABI } from '@/consts'
+import { getLangFromUrl } from '@/i18n/utils'
+
+const lang = getLangFromUrl(Astro.url)
+console.log(lang)
+
+const UI = {
+  "TITLE": {
+    en: "Hey, I'm Carlos Cabi",
+    es: "Hey, soy Carlos Cabi",
+  },
+  "HIRING": {
+    en: "Available for hire",
+    es: "Disponible para trabajar",
+  },
+  "P1": {
+    en: "Enthusiastic Problem-solving",
+    es: "",
+  }
+}
+
 ---
 
 <div class="flex flex-col sm:flex-row items-center gap-5">
@@ -23,7 +43,7 @@ import { EMAIL_CARLOS_CABI } from '@/consts'
       </a>
     </h1>
     <p class="text-base text-center sm:text-lg sm:text-justify opacity-80 text-pretty">
-      Enthusiastic Problem-solving<StrongText> Web Developer </StrongText> from Kentucky, the USA -en-. <StrongText>Always up for a challenge.</StrongText>
+      Enthusiastic Problem-solving<StrongText> Web Developer </StrongText> from Kentucky, USA. <StrongText>Always up for a challenge.</StrongText>
     </p>  
   </div> 
 
