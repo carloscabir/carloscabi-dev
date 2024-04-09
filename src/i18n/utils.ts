@@ -24,5 +24,7 @@ export function useLink(lang: keyof typeof languages, label: string) {
 }
 
 export function getPreferredLang() {
-    if (typeof localStorage !== 'undefined') return localStorage.getItem("language") ?? defaultLang
+  if (typeof localStorage !== 'undefined') {
+    return localStorage.getItem("language") ?? defaultLang
   }
+}

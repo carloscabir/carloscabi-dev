@@ -3,7 +3,24 @@ import LinkButton from './LinkButton.astro'
 import CopyIcon from './icons/Copy.astro'
 import SendIcon from './icons/Send.astro'
 
+import { getLangFromUrl } from '@/i18n/utils'
+
 import { EMAIL_CARLOS_CABI } from '@/consts'
+
+const lang = getLangFromUrl(Astro.url)
+
+const UI = {
+  en: {
+    BTN_COPY_LABEL: "Copied",
+    BTN_COPY_TITLE: "Copy Email",
+    BTN_SEND_EMAIL_TITLE: "Send Email through your default email client"
+  },
+  es: {
+    BTN_COPY_LABEL: "Copiado",
+    BTN_COPY_TITLE: "Copiar Email",
+    BTN_SEND_EMAIL_TITLE: "Enviar email a traves de tu cliente de email por defecto"
+  },
+}
 ---
 
 <article class="w-5/6 lg:w-full flex gap-x-5 justify-around align-middle">
@@ -12,15 +29,15 @@ import { EMAIL_CARLOS_CABI } from '@/consts'
   </p>
 
   <div class="w-1/12 flex gap-x-2">
-    <LinkButton id="copy-email-button" title="Copy Email" class="bg-blue-500 dark:bg-blue-300 border-blue-400">
+    <LinkButton id="copy-email-button" title={UI[lang].BTN_COPY_TITLE} class="bg-blue-500 dark:bg-blue-300 border-blue-400">
       <CopyIcon data-tooltip-target="tooltip-animation" class="size-6"/>
       
       <div id="tooltip" class="scale-0 transition-all fixed -top-8 rounded-md px-2 py-1 text-sm text-gray-200 bg-zinc-900 dark:bg-gray-300/30 shadow-sm">
-        Copied
+        {UI[lang].BTN_COPY_LABEL}
       </div>
     </LinkButton>
     
-    <LinkButton href={`mailto:${EMAIL_CARLOS_CABI}`} title="Send Email through your default email client" class="bg-blue-500 dark:bg-blue-300/90 border-blue-400/90">
+    <LinkButton href={`mailto:${EMAIL_CARLOS_CABI}`} title={UI[lang].BTN_SEND_EMAIL_TITLE} class="bg-blue-500 dark:bg-blue-300/90 border-blue-400/90">
       <SendIcon class="size-6"/>
     </LinkButton>
   </div>

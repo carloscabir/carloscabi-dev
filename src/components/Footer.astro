@@ -1,9 +1,24 @@
+---
+import { getLangFromUrl } from '@/i18n/utils';
+
+const lang = getLangFromUrl(Astro.url)
+
+const CONTENT = {
+  en: {
+    RIGHTS: "Almost all rights reserved"
+  },
+  es: {
+    RIGHTS: "Casi todos los derechos reservados"
+  }
+}
+---
+
 <footer class="w-full max-w-screen-lg mx-auto flex flex-col">
   <article class="w-full py-10 px-5 mb-3 mx-auto rounded-lg sm:rounded-sm text-gray-200 bg-zinc-900 dark:bg-zinc-900/80">
     <div class="w-full">
       <span class="text-sm text-start sm:text-center">
         © 2024
-        carloscabi. Almost all rights reserved
+        carloscabi. {CONTENT[lang].RIGHTS}
       </span>
     </div>
   </article>

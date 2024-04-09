@@ -13,6 +13,7 @@ import Projects from '@/components/Projects.astro'
 import About from '@/components/About.astro'
 import Contact from '@/components/Contact.astro'
 import Intro from '@/components/Intro.astro'
+import StrongText from '@/components/StrongText.astro'
 ---
 
 <Layout 
@@ -20,15 +21,17 @@ title="Carlos Cabi - Un Joven Desarrollador Web en proceso de alcanzar un futuro
 description="Soy Carlos Cabi, un Desarollador Web Full-Stack apasionado por crear aplicaciones de alta calidad con React, Node.js, y más! Hagamos realidad tu visión web!"
 >
 <MainContainer>
-    
+
     <SectionContainer class="flex flex-col gap-8">
-      <Intro />
+      <Intro>
+        <StrongText> Desarrollador Web </StrongText> apasionado por resolver problemas de Kentucky, EE.UU. <StrongText> Siempre dispuesto a enfrentar un desafío. </StrongText>
+      </Intro>
     </SectionContainer>
 
     <SectionContainer id="projects">
       <SectionTitle class="text-2xl md:text-3xl flex items-center gap-x-2 mb-10">
         <CodeTagIcon class="size-7 h-7 inline sm:size-9" />
-        Projects
+        Proyectos
       </SectionTitle>
       
       <Projects />
@@ -37,16 +40,28 @@ description="Soy Carlos Cabi, un Desarollador Web Full-Stack apasionado por crea
     <SectionContainer id="about">
       <SectionTitle>
         <PersonIcon class="size-7 inline sm:size-9" />
-        About me
+        Sobre mí
       </SectionTitle>
      
-      <About />
+      <About>
+        <p>
+          Me llamo Carlos Camacho, pero mis amigos me dicen Cabi. <StrongText> Impulsado por una pasión por la resolución de problemas, </StrongText> me convertí en un <StrongText> programador autodidacta a los 14 años. </StrongText> Disfruto especialmente de enfrentar desafíos algorítmicos en LeetCode para afinar mis habilidades para resolver problemas. <StrongText> La experiencia y el tiempo me motivan a sumergirme en la construcción de aplicaciones Full-Stack. </StrongText>
+        </p>
+
+        <p>
+          <StrongText> Actualmente estoy enfocado en dominar los fundamentos de las aplicaciones Full-Stack con tecnologías como Node.js, React.js, GraphQL y MySQL. </StrongText> Para solidificar mis conocimientos, estoy construyendo proyectos activamente para practicar mis habilidades.
+        </p>
+
+        <p>
+          Como estudiante de segundo año de secundaria, <StrongText> estoy constantemente aprendiendo y explorando nuevas nociones de la vida antes de aventurarme en la universidad y la edad adulta. </StrongText> Me interesa particularmente el desarrollo web Full Stack y estoy desarrollando activamente mis habilidades para seguir una carrera en este campo. <StrongText> Mi objetivo final es convertirme en un ingeniero de software o un ingeniero de ciencia de datos. </StrongText>
+        </p>
+      </About>
     </SectionContainer>
   
     <SectionContainer id="contact">
       <SectionTitle>
         <EmailThinIcon class="size-7 inline sm:size-9"/>
-        Contact
+        Contacto
       </SectionTitle>
      
       <Contact />

@@ -3,7 +3,6 @@ import LinkedInIcon from '../components/icons/LinkedIn.astro'
 import GitHubIcon from '../components/icons/GitHub.astro'
 import EmailIcon from '../components/icons/Gmail.astro'
 
-import StrongText from '../components/StrongText.astro'
 import Badge from '../components/Badge.astro'
 import SocialPill from '../components/Pill.astro'
 
@@ -11,20 +10,15 @@ import { EMAIL_CARLOS_CABI } from '@/consts'
 import { getLangFromUrl } from '@/i18n/utils'
 
 const lang = getLangFromUrl(Astro.url)
-console.log(lang)
 
-const UI = {
-  "TITLE": {
-    en: "Hey, I'm Carlos Cabi",
-    es: "Hey, soy Carlos Cabi",
+const CONTENT = {
+  en: {
+   TITLE: "Hey, I'm Carlos Cabi",
+   HIRING: "Available for hire"
   },
-  "HIRING": {
-    en: "Available for hire",
-    es: "Disponible para trabajar",
-  },
-  "P1": {
-    en: "Enthusiastic Problem-solving",
-    es: "",
+  es: {
+    TITLE: "Hey, soy Carlos Cabi",
+    HIRING: "Disponible para trabajar"
   }
 }
 
@@ -37,16 +31,15 @@ const UI = {
 
   <div>
     <h1 class="flex flex-col sm:flex-row items-center gap-2 text-4xl mb-2 pb-3">
-      Hey, I'm Carlos Cabi 
+      {CONTENT[lang].TITLE}
+
       <a href="https://www.linkedin.com/in/carlos-cabi/" target="_blank" rel="noopener" class="flex flex-col items-center px-1">
-        <Badge class="md:text-[14px] md:ml-3" title="Go to my LinkedIn">Available for hire</Badge>
+        <Badge class="md:text-[14px] md:ml-3" title="Go to my LinkedIn"> {CONTENT[lang].HIRING} </Badge>
       </a>
     </h1>
-    <p class="text-base text-center sm:text-lg sm:text-justify opacity-80 text-pretty">
-      Enthusiastic Problem-solving<StrongText> Web Developer </StrongText> from Kentucky, USA. <StrongText>Always up for a challenge.</StrongText>
-    </p>  
+    
+    <slot />
   </div> 
-
 </div>
 
 <div class="self-center">

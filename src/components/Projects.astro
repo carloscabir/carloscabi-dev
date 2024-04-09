@@ -4,32 +4,65 @@ import LinkIcon from './icons/Link.astro'
 import LinkButton from './LinkButton.astro'
 import GitHubLightIcon from './icons/GitHubLight.astro'
 
+import { getLangFromUrl } from '@/i18n/utils'
+
+const lang = getLangFromUrl(Astro.url)
+
 const { NEXT, REACT, TYPESCRIPT, NODE } = TAGS
 
-const PROJECTS = [
-  {
-    title: 'Todo App - Simple and minimalist details',
-    description: 'A To-do list App for creating quick tasks! Made from scratch with Typescript, React and Node.js as API Server.',
-    github: "https://github.com/carloscabir/My-Coding-Projects-carloscabir/tree/main/02-fullstack/00-todo-app",
-    link: "https://todoapp-carloscabi.netlify.app/",
-    image: '/shot-todo.webp',
-    tags: [REACT, TYPESCRIPT, NODE]
-  },
-  {
-    title: 'Pomodoro Clock - A productive clock for Pomofocus technique',
-    description: 'Clock for studying. 100% focused on you, 100% focused on your work. Made from scratch with React.',
-    github: "https://github.com/carloscabir/My-Coding-Projects-carloscabir/tree/main/01-frontend/00-frecodecamp-libraries-proojects/04-pomodoro-clock",
-    link: "https://codepen.io/taidmc/full/QWYBmQw",
-    image: '/shot-pomodoro.webp',
-    tags: [REACT, NEXT]
+const PROJECTS = {
+  en: [
+    {
+      title: 'Todo App - Simple and minimalist details',
+      description: 'A To-do list App for creating quick tasks! Made from scratch with Typescript, React and Node.js as API Server.',
+      github: "https://github.com/carloscabir/My-Coding-Projects-carloscabir/tree/main/02-fullstack/00-todo-app",
+      link: "https://todoapp-carloscabi.netlify.app/",
+      image: '/shot-todo.webp',
+      tags: [REACT, TYPESCRIPT, NODE]
+    },
+    {
+      title: 'Pomodoro Clock - A productive clock for Pomodoro technique',
+      description: 'Clock for studying. 100% focused on you, 100% focused on your work. Made from scratch with React.',
+      github: "https://github.com/carloscabir/My-Coding-Projects-carloscabir/tree/main/01-frontend/00-frecodecamp-libraries-proojects/04-pomodoro-clock",
+      link: "https://codepen.io/taidmc/full/QWYBmQw",
+      image: '/shot-pomodoro.webp',
+      tags: [REACT, NEXT]
+    }],
+    es: [
+    {
+      title: 'Todo App - Detalles simples y minimalistas',
+      description: 'Una aplicación de Lista de Tareas para crear tareas rápidas! Desarrollada desde cero con Typescript, React y Node.js como servidor API.',
+      github: "https://github.com/carloscabir/My-Coding-Projects-carloscabir/tree/main/02-fullstack/00-todo-app",
+      link: "https://todoapp-carloscabi.netlify.app/",
+      image: '/shot-todo.webp',
+      tags: [REACT, TYPESCRIPT, NODE]
+    },
+    {
+      title: 'Pomodoro Clock - Un temporizador productivo para la técnica Pomodoro',
+      description: 'Temporizador para estudiar. 100% enfocado en ti, 100% enfocado en tu trabajo. Desarrollado desde cero con React.',
+      github: "https://github.com/carloscabir/My-Coding-Projects-carloscabir/tree/main/01-frontend/00-frecodecamp-libraries-proojects/04-pomodoro-clock",
+      link: "https://codepen.io/taidmc/full/QWYBmQw",
+      image: '/shot-pomodoro.webp',
+      tags: [REACT, NEXT]
+    }]
   }
-]
+
+  const LINK_LABELS = {
+    en: {
+      CODE: "Code",
+      PREVIEW: "Preview"
+    },
+    es: {
+      CODE: "Codigo",
+      PREVIEW: "Preview"
+    }
+  }
 ---
 
 
 <div class="flex flex-col gap-y-16">
 {
-  PROJECTS.map(({ title, description, tags, image, github, link }) => {
+  PROJECTS[lang].map(({ title, description, tags, image, github, link }) => {
     return (
       <div class="flex flex-col md:flex-row gap-10 transition-all">
         
@@ -51,7 +84,7 @@ const PROJECTS = [
                   <li>
                     <span class={`flex items-center gap-x-2 rounded-full text-xs px-2 py-0.5 ${tag.class}`}>
                       <tag.icon class="size-5" />
-                      { tag.name }
+                      {tag.name}
                     </span>
                   </li>)
               })}
@@ -67,7 +100,7 @@ const PROJECTS = [
                 rel="noopener"
                 target="_blank">
                   <GitHubLightIcon class="size-6"/>
-                  Code
+                  {LINK_LABELS[lang].CODE}
                 </LinkButton>
               }
 
@@ -78,7 +111,7 @@ const PROJECTS = [
                 rel="noopener"
                 target="_blank">
                   <LinkIcon />
-                  Preview
+                  {LINK_LABELS[lang].PREVIEW}
                 </LinkButton>
               }
             </footer>

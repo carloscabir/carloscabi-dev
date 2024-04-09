@@ -5,23 +5,59 @@
   import MainContainer from '@/components/MainContainer.astro'
 
   import Badge from '@/components/Badge.astro'
+  import Pill from '@/components/Pill.astro'
+  import LinkButton from '@/components/LinkButton.astro'
+  import StrongText from '@/components/StrongText.astro'
+  
+  import GitHub from '@/components/icons/GitHub.astro'
+  import GitHubLight from '@/components/icons/GitHubLight.astro'
 ---
 
 <Layout 
-  title='Design System portfoli.dev'
+  title='Design System carloscabi.com'
   description='Catalog of components of the portfolio'>
   <MainContainer class="w-full">
-    <SectionContainer class="justify-normal">
-      
-        <article class="">
-          <h1>&lt; Badge /&gt;</h1>
+    <SectionContainer class="flex flex-col gap-y-5">
+        
+        <h1 class="text-3xl my-5">Design System</h1>
+
+        <article>
+          <h2>&lt; Badge /&gt;</h2>
           
           <div>
-            <Badge>Tailwind</Badge>
-            <Badge>Next.js</Badge>
+            <Badge>Available to hire</Badge>
           </div>
         </article>
-  
+
+        <article>
+          <h2>&lt; Pill /&gt;</h2>
+
+          <div>
+            <Pill class="w-28">
+              <GitHub class="size-5"/>
+              Github
+            </Pill>
+          </div>
+        </article>
+
+        <article>
+          <h2>&lt; Link /&gt;</h2>
+
+          <div>
+            <LinkButton class="w-28">
+              <GitHubLight class="size-5"/>
+              Code
+            </Link>
+          </div>
+        </article>
+
+        <article>
+           <h2>&lt; StrongText /&gt;</h2>
+
+           <div>
+            <StrongText>This is StrongText Component</StrongText>
+           </div>
+        </article>
     </SectionContainer>
 
   </MainContainer>

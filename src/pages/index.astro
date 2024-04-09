@@ -13,6 +13,8 @@ import Projects from '../components/Projects.astro'
 import About from '../components/About.astro'
 import Contact from '../components/Contact.astro'
 import Intro from '../components/Intro.astro'
+
+import StrongText from '@/components/StrongText.astro';
 ---
 
 <Layout 
@@ -22,7 +24,11 @@ description="I'm Carlos Cabi, a Full-Stack Web Developer with passion for crafti
 <MainContainer>
     
     <SectionContainer class="flex flex-col gap-8">
-      <Intro />
+      <Intro>
+        <p class="text-base text-center sm:text-lg sm:text-justify opacity-80 text-pretty">
+          Enthusiastic Problem-solving <StrongText> Web Developer </StrongText> from Kentucky, the US. <StrongText>Always up for a challenge.</StrongText>
+        </p> 
+      </Intro>
     </SectionContainer>
 
     <SectionContainer id="projects">
@@ -40,7 +46,19 @@ description="I'm Carlos Cabi, a Full-Stack Web Developer with passion for crafti
         About me
       </SectionTitle>
      
-      <About />
+      <About>
+      <p>
+        I'm Carlos Camacho, but friends call me Cabi. <StrongText>Fueled by a passion for problem-solving,</StrongText> I became a <StrongText>self-taught programmer at 14.</StrongText> I particularly enjoy tackling algorithmic challenges on LeetCode to sharpen my problem-solving skills. <StrongText>The experience and time motivate me to dive into building Full-Stack applications.</StrongText>
+      </p>
+
+      <p>
+        <StrongText> I'm currently focused on mastering the fundamentals of Full-Stack applications with technologies such as Node.js, React.js, GraphQL and MySQL.</StrongText> To solidify my knowledge, I'm actively building projects to practice my skills.
+      </p>
+
+      <p>
+        As a High School Sophomore,<StrongText>I'm constantly learning and exploring new notions of life before venturing into college and adulthood.</StrongText>I'm particularly interested in Full Stack Web development and am actively building my skills to pursue a career in this field. <StrongText>My ultimate goal is to become a Software Engineer or Data Science Engineer.</StrongText>
+      </p>
+      </About>
     </SectionContainer>
   
     <SectionContainer id="contact">
