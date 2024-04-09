@@ -2,6 +2,8 @@
 This portfolio website is designed to showcase my skills and experience as a developer.
 Made from scratch with Astro.js, TypeScript and Tailwind CSS.
 
+<img src="./public/carloscabi-shot.webp" alt="Carlos Cabi Web shot"/>
+
 ## Local Setup
 ### Prerequisites:
 
@@ -12,7 +14,7 @@ Node.js and npm (or yarn) installed on your machine. You can download them from 
 1. Clone the Repository:
 
 ```Bash
-git clone https://your-github-repo.git
+git clone https://github.com/carloscabir/carloscabi-dev
 ```
 
 2.  Install Dependencies:
@@ -61,9 +63,8 @@ This portfolio website is always evolving! I welcome contributions from anyone i
 > I appreciate any contributions that help improve this portfolio!
 
 ## Website's URL
-"Website URL here"
+This URL for preview, in the future with an own domain
+https://carloscabi.netlify.app/
 
 ## Contact
 Feel free to reach out to me with any questions or opportunities: cabicarlosdev@gmail.com
-
-# Consider adding screenshots or GIFs to showcase your project visually.
