@@ -18,7 +18,7 @@ const t = useTranslations(lang)
   <div id="languages-menu" class="absolute scale-0 transition-all top-8 right-0 text-sm p-1 min-w-[8rem] rounded-md border border-gray-100 bg-white/90 dark:bg-black/95 dark:border-blue-300/10 shadow-[0_3px_10px_rgb(0,0,0,0.2)] backdrop-blur-sm">
     <ul>
       {
-        Object.entries(languages).map(([lang, label]) => {
+        Object.entries(languages).map(([lang]) => {
           return (
           <li class="languages-menu-option px-2 py-1.5 cursor-default text-black dark:text-white/95 hover:bg-neutral-400/40 dark:hover:bg-gray-500/50 rounded-sm" data-language={lang}>
           {t(UI_LANG_MENU_KEYS[lang as keyof typeof UI_LANG_MENU_KEYS])}
